@@ -6,7 +6,7 @@ function Home() {
 	const [count, setCount] = useState(0)
 	return (
 		<>
-			<Layout heading='asdads'>
+			<Layout heading='Home page'>
 				<div className='Home'>
 					<a target='_blank'>
 						<img src={workoutLogo} className='logo' alt='Vite logo' />
