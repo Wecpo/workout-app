@@ -1,29 +1,21 @@
-import { useState } from 'react'
-import workoutLogo from '../../../../public/workout.svg'
 import Layout from '../../layout/Layout'
+import { useNavigate } from 'react-router'
+import Button from '../../ui/button/Button'
+import styles from './Home.module.scss'
+import { useAuth } from '../../../hooks/useAuth'
 
 function Home() {
-	const [count, setCount] = useState(0)
+	const { isAuth } = useAuth()
+	const navigate = useNavigate()
 	return (
 		<>
-			<Layout heading='Home page'>
-				<div className='Home'>
-					<a target='_blank'>
-						<img src={workoutLogo} className='logo' alt='Vite logo' />
-					</a>
-				</div>
-				<h1>Vite + Reacasdasdt</h1>
-				<div className='card'>
-					<button onClick={() => setCount(count => count + 1)}>
-						count is {count}
-					</button>
-					<p>
-						Edit <code>src/App.jsx</code> and save to test HMR
-					</p>
-				</div>
-				<p className='read-the-docs'>
-					Click on the Vite and React logos to learn more
-				</p>
+			<Layout bgImage='/images/home-bg.jpg'>
+				<Button
+					clickHandler={() => navigate(isAuth ? '/new-workout' : '/login')}
+				>
+					{isAuth ? 'New' : 'Sign in'}
+				</Button>
+				<h1 className={styles.heading}>STATE OF THE DAY</h1>
 			</Layout>
 		</>
 	)
